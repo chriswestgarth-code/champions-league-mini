@@ -2,9 +2,9 @@ name: Update Matchday Standings
 
 on:
   schedule:
-    # Runs at 04:00 UTC (noon Taiwan time) every Wednesday and Thursday morning after matchdays
-    - cron: '0 4 * * 3,4'
-  workflow_dispatch: # Allows manual button click from GitHub to run anytime
+    # Runs every day at 04:00 UTC (12:00 PM Taiwan time)
+    - cron: '0 4 * * *'
+  workflow_dispatch: # Allows manual run button anytime
 
 jobs:
   update-scores:
