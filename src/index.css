@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes floatStar {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.18;
+  }
+  80% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.star-particle {
+  position: absolute;
+  color: #38bdf8;
+  pointer-events: none;
+  animation: floatStar linear infinite;
+}
+
 body {
-  @apply bg-[#060B1E] text-slate-100 min-h-screen antialiased;
+  @apply bg-[#040817] text-slate-100 min-h-screen antialiased overflow-x-hidden relative;
 }
