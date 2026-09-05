@@ -10,70 +10,70 @@
       "id": "westy",
       "name": "Westy",
       "teams": [
-        { "pot": 1, "name": "Inter Milan", "code": "INT", "badge": "https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg" },
-        { "pot": 2, "name": "Man United", "code": "MUN", "badge": "https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" },
-        { "pot": 3, "name": "RB Leipzig", "code": "RBL", "badge": "https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2020_logo.svg" },
-        { "pot": 4, "name": "Stuttgart", "code": "STU", "badge": "https://upload.wikimedia.org/wikipedia/commons/e/eb/VfB_Stuttgart_1893_Logo.svg" }
+        { "pot": 1, "name": "Inter Milan", "code": "INT", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png" },
+        { "pot": 2, "name": "Man United", "code": "MUN", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png" },
+        { "pot": 3, "name": "RB Leipzig", "code": "RBL", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png" },
+        { "pot": 4, "name": "Stuttgart", "code": "STU", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10269.png" }
       ]
     },
     {
       "id": "theo",
       "name": "Theo",
       "teams": [
-        { "pot": 1, "name": "Liverpool", "code": "LIV", "badge": "https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" },
-        { "pot": 2, "name": "Porto", "code": "POR", "badge": "https://upload.wikimedia.org/wikipedia/en/f/f1/FC_Porto.svg" },
-        { "pot": 3, "name": "Shakhtar Donetsk", "code": "SHK", "badge": "https://upload.wikimedia.org/wikipedia/en/a/a1/FC_Shakhtar_Donetsk.svg" },
-        { "pot": 4, "name": "Como", "code": "COM", "badge": "https://upload.wikimedia.org/wikipedia/en/7/77/Como_1907_logo.svg" }
+        { "pot": 1, "name": "Liverpool", "code": "LIV", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png" },
+        { "pot": 2, "name": "Porto", "code": "POR", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png" },
+        { "pot": 3, "name": "Shakhtar Donetsk", "code": "SHK", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/2034.png" },
+        { "pot": 4, "name": "Como", "code": "COM", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10006.png" }
       ]
     },
     {
       "id": "antoine",
       "name": "Antoine",
       "teams": [
-        { "pot": 1, "name": "Real Madrid", "code": "RMA", "badge": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" },
-        { "pot": 2, "name": "PSV Eindhoven", "code": "PSV", "badge": "https://upload.wikimedia.org/wikipedia/en/0/05/PSV_Eindhoven.svg" },
-        { "pot": 3, "name": "Feyenoord", "code": "FEY", "badge": "https://upload.wikimedia.org/wikipedia/en/e/e3/Feyenoord_logo.svg" },
-        { "pot": 4, "name": "Lens", "code": "RCL", "badge": "https://upload.wikimedia.org/wikipedia/en/c/cc/RC_Lens_logo.svg" }
+        { "pot": 1, "name": "Real Madrid", "code": "RMA", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png" },
+        { "pot": 2, "name": "PSV Eindhoven", "code": "PSV", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png" },
+        { "pot": 3, "name": "Feyenoord", "code": "FEY", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10235.png" },
+        { "pot": 4, "name": "Lens", "code": "RCL", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png" }
       ]
     },
     {
       "id": "charlie",
       "name": "Charlie",
       "teams": [
-        { "pot": 1, "name": "PSG", "code": "PSG", "badge": "https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" },
-        { "pot": 2, "name": "Dortmund", "code": "BVB", "badge": "https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg" },
-        { "pot": 3, "name": "Bodø/Glimt", "code": "BOD", "badge": "https://upload.wikimedia.org/wikipedia/en/3/36/FK_Bod%C3%B8_Glimt_logo.svg" },
-        { "pot": 4, "name": "Viking", "code": "VIK", "badge": "https://upload.wikimedia.org/wikipedia/en/7/7b/Viking_FK_logo.svg" }
+        { "pot": 1, "name": "PSG", "code": "PSG", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9847.png" },
+        { "pot": 2, "name": "Dortmund", "code": "BVB", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9789.png" },
+        { "pot": 3, "name": "Bodø/Glimt", "code": "BOD", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8402.png" },
+        { "pot": 4, "name": "Viking", "code": "VIK", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8422.png" }
       ]
     },
     {
       "id": "sam",
       "name": "Sam",
       "teams": [
-        { "pot": 1, "name": "Arsenal", "code": "ARS", "badge": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" },
-        { "pot": 2, "name": "Aston Villa", "code": "AVL", "badge": "https://upload.wikimedia.org/wikipedia/en/9/9f/Aston_Villa_logo.svg" },
-        { "pot": 3, "name": "Galatasaray", "code": "GAL", "badge": "https://upload.wikimedia.org/wikipedia/commons/3/37/Galatasaray_Star_Logo.svg" },
-        { "pot": 4, "name": "Slavia Praha", "code": "SLA", "badge": "https://upload.wikimedia.org/wikipedia/en/a/a2/SK_Slavia_Praha_logo.svg" }
+        { "pot": 1, "name": "Arsenal", "code": "ARS", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png" },
+        { "pot": 2, "name": "Aston Villa", "code": "AVL", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png" },
+        { "pot": 3, "name": "Galatasaray", "code": "GAL", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png" },
+        { "pot": 4, "name": "Slavia Praha", "code": "SLA", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8490.png" }
       ]
     },
     {
       "id": "matt",
       "name": "Matt",
       "teams": [
-        { "pot": 1, "name": "Bayern Munich", "code": "BAY", "badge": "https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" },
-        { "pot": 2, "name": "Sporting CP", "code": "SCP", "badge": "https://upload.wikimedia.org/wikipedia/en/e/e1/Sporting_Clube_de_Portugal_%28Logo%29.svg" },
-        { "pot": 3, "name": "Lille", "code": "LIL", "badge": "https://upload.wikimedia.org/wikipedia/en/6/6f/Lille_OSC_2018_logo.svg" },
-        { "pot": 4, "name": "LASK", "code": "LSK", "badge": "https://upload.wikimedia.org/wikipedia/commons/7/73/LASK_Logo_2023.svg" }
+        { "pot": 1, "name": "Bayern Munich", "code": "BAY", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png" },
+        { "pot": 2, "name": "Sporting CP", "code": "SCP", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png" },
+        { "pot": 3, "name": "Lille", "code": "LIL", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png" },
+        { "pot": 4, "name": "LASK", "code": "LSK", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8327.png" }
       ]
     },
     {
       "id": "wilson",
       "name": "Wilson",
       "teams": [
-        { "pot": 1, "name": "Barcelona", "code": "BAR", "badge": "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" },
-        { "pot": 2, "name": "Roma", "code": "ROM", "badge": "https://upload.wikimedia.org/wikipedia/en/f/f7/AS_Roma_logo_%282017%29.svg" },
-        { "pot": 3, "name": "Napoli", "code": "NAP", "badge": "https://upload.wikimedia.org/wikipedia/commons/b/ba/SSC_Napoli_2024_%28deep_blue_navy%29.svg" },
-        { "pot": 4, "name": "AEK Athens", "code": "AEK", "badge": "https://upload.wikimedia.org/wikipedia/en/0/04/AEK_Athens_FC_logo.svg" }
+        { "pot": 1, "name": "Barcelona", "code": "BAR", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8634.png" },
+        { "pot": 2, "name": "Roma", "code": "ROM", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8686.png" },
+        { "pot": 3, "name": "Napoli", "code": "NAP", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9875.png" },
+        { "pot": 4, "name": "AEK Athens", "code": "AEK", "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9860.png" }
       ]
     }
   ]
