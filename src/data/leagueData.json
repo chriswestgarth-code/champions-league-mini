@@ -1,0 +1,80 @@
+{
+  "competition": "These are the champions",
+  "prizes": {
+    "1st": "NT$2,000",
+    "2nd": "NT$1,000",
+    "3rd": "NT$500"
+  },
+  "managers": [
+    {
+      "id": "westy",
+      "name": "Westy",
+      "teams": [
+        { "pot": 1, "name": "Inter Milan", "code": "INT" },
+        { "pot": 2, "name": "Man United", "code": "MUN" },
+        { "pot": 3, "name": "RB Leipzig", "code": "RBL" },
+        { "pot": 4, "name": "Stuttgart", "code": "STU" }
+      ]
+    },
+    {
+      "id": "theo",
+      "name": "Theo",
+      "teams": [
+        { "pot": 1, "name": "Liverpool", "code": "LIV" },
+        { "pot": 2, "name": "Porto", "code": "POR" },
+        { "pot": 3, "name": "Shakhtar Donetsk", "code": "SHK" },
+        { "pot": 4, "name": "Como", "code": "COM" }
+      ]
+    },
+    {
+      "id": "antoine",
+      "name": "Antoine",
+      "teams": [
+        { "pot": 1, "name": "Real Madrid", "code": "RMA" },
+        { "pot": 2, "name": "PSV Eindhoven", "code": "PSV" },
+        { "pot": 3, "name": "Feyenoord", "code": "FEY" },
+        { "pot": 4, "name": "Lens", "code": "RCL" }
+      ]
+    },
+    {
+      "id": "charlie",
+      "name": "Charlie",
+      "teams": [
+        { "pot": 1, "name": "Paris Saint-Germain", "code": "PSG" },
+        { "pot": 2, "name": "Borussia Dortmund", "code": "BVB" },
+        { "pot": 3, "name": "Bodø/Glimt", "code": "BOD" },
+        { "pot": 4, "name": "Viking", "code": "VIK" }
+      ]
+    },
+    {
+      "id": "sam",
+      "name": "Sam",
+      "teams": [
+        { "pot": 1, "name": "Arsenal", "code": "ARS" },
+        { "pot": 2, "name": "Aston Villa", "code": "AVL" },
+        { "pot": 3, "name": "Galatasaray", "code": "GAL" },
+        { "pot": 4, "name": "Slavia Praha", "code": "SLA" }
+      ]
+    },
+    {
+      "id": "matt",
+      "name": "Matt",
+      "teams": [
+        { "pot": 1, "name": "Bayern Munich", "code": "BAY" },
+        { "pot": 2, "name": "Sporting CP", "code": "SCP" },
+        { "pot": 3, "name": "Lille", "code": "LIL" },
+        { "pot": 4, "name": "LASK", "code": "LSK" }
+      ]
+    },
+    {
+      "id": "wilson",
+      "name": "Wilson",
+      "teams": [
+        { "pot": 1, "name": "Barcelona", "code": "BAR" },
+        { "pot": 2, "name": "Roma", "code": "ROM" },
+        { "pot": 3, "name": "Napoli", "code": "NAP" },
+        { "pot": 4, "name": "AEK Athens", "code": "AEK" }
+      ]
+    }
+  ]
+}
