@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import leagueData from './data/leagueData.json';
+import liveStandings from './data/standings.json';
 import { 
   Trophy, Copy, Check, ArrowUp, ArrowDown, Minus, 
   ChevronDown, ChevronUp, BookOpen, X, Shield, AlertOctagon
@@ -13,25 +14,13 @@ const potColors = {
 };
 
 // Initial state with 0s across all stats (pre-season)
-const initialStandings = leagueData.managers.map((m, index) => ({
-  rank: index + 1,
-  rankDelta: 0,
-  managerName: m.name,
-  w: 0,
-  d: 0,
-  cs: 0,
-  rc: 0,
-  pts: 0,
-  teams: m.teams.map((t) => ({
-    ...t,
-    w: 0,
-    d: 0,
-    l: 0,
-    cs: 0,
-    rc: 0,
-    pts: 0
-  }))
-}));
+const initialStandings = liveStandings.map((s) => {
+  const managerConfig = leagueData.managers.find(m => m.name === s.managerName) || {};
+  return {
+    ...s,
+    teams: s.teams || (managerConfig.teams || []).map(t => ({ ...t, w: 0, d: 0, l: 0, cs: 0, rc: 0, pts: 0 }))
+  };
+});
 
 export default function App() {
   const [copied, setCopied] = useState(false);
