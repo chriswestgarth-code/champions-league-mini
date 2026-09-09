@@ -2,9 +2,12 @@ name: Update Matchday Standings
 
 on:
   schedule:
-    # Runs every day at 04:00 UTC (12:00 PM Taiwan time)
+    # Runs daily at 04:00 UTC (noon Taiwan time)
     - cron: '0 4 * * *'
   workflow_dispatch: # Allows manual run button anytime
+
+permissions:
+  contents: write
 
 jobs:
   update-scores:
@@ -16,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Run Scoring Sync
         env:
