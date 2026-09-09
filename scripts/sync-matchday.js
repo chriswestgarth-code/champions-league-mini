@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 
-// Team ID Mapping to API-Football IDs
 const TEAM_API_IDS = {
   "Inter Milan": 505,
   "Man United": 33,
@@ -34,53 +33,68 @@ const TEAM_API_IDS = {
 };
 
 const UCL_LEAGUE_ID = 2; // UEFA Champions League
-const SEASON = 2026; // Current season
 
-async function fetchFixtures() {
-  const apiKey = process.env.FOOTBALL_API_KEY;
-  if (!apiKey) {
-    console.error("Missing FOOTBALL_API_KEY environment variable.");
-    process.exit(1);
-  }
+async function fetchFixturesForSeason(seasonYear, apiKey) {
+  const url = `https://v3.football.api-sports.io/fixtures?league=${UCL_LEAGUE_ID}&season=${seasonYear}`;
+  console.log(`Querying API: ${url}`);
 
-  const res = await fetch(`https://v3.football.api-sports.io/fixtures?league=${UCL_LEAGUE_ID}&season=${SEASON}`, {
-    headers: {
-      'x-apisports-key': apiKey
+  try {
+    const res = await fetch(url, {
+      headers: { 'x-apisports-key': apiKey }
+    });
+    const data = await res.json();
+    
+    if (data.errors && Object.keys(data.errors).length > 0) {
+      console.log(`API returned errors for season ${seasonYear}:`, JSON.stringify(data.errors));
     }
-  });
-
-  const data = await res.json();
-  return data.response || [];
+    
+    const fixtures = data.response || [];
+    console.log(`Season ${seasonYear}: Found ${fixtures.length} fixtures total.`);
+    return fixtures;
+  } catch (err) {
+    console.error(`Fetch error for season ${seasonYear}:`, err.message);
+    return [];
+  }
 }
 
 async function run() {
+  const apiKey = process.env.FOOTBALL_API_KEY;
+  if (!apiKey) {
+    console.error("CRITICAL ERROR: FOOTBALL_API_KEY is not set in GitHub Secrets.");
+    process.exit(1);
+  }
+
+  // Check 2026 season first, fallback to 2025 if API-Football indexes starting year
+  let fixtures = await fetchFixturesForSeason(2026, apiKey);
+  if (fixtures.length === 0) {
+    console.log("Season 2026 returned 0 fixtures. Trying season 2025...");
+    fixtures = await fetchFixturesForSeason(2025, apiKey);
+  }
+
   const leagueDataPath = path.resolve('src/data/leagueData.json');
   const leagueData = JSON.parse(fs.readFileSync(leagueDataPath, 'utf8'));
 
-  const fixtures = await fetchFixtures();
-
-  // Track each team's points and tiebreaker stats
   const teamStats = {};
   Object.keys(TEAM_API_IDS).forEach((teamName) => {
     teamStats[teamName] = { w: 0, d: 0, l: 0, cs: 0, rc: 0, pts: 0 };
   });
 
-  // Process completed UCL matches
-  fixtures.forEach((item) => {
-    const status = item.fixture.status.short;
-    if (!['FT', 'AET', 'PEN'].includes(status)) return; // Only process finished fixtures
+  let finishedCount = 0;
 
-    const homeId = item.teams.home.id;
-    const awayId = item.teams.away.id;
+  fixtures.forEach((item) => {
+    const status = item.fixture?.status?.short;
+    if (!['FT', 'AET', 'PEN'].includes(status)) return;
+    finishedCount++;
+
+    const homeId = item.teams?.home?.id;
+    const awayId = item.teams?.away?.id;
 
     const homeTeamName = Object.keys(TEAM_API_IDS).find(name => TEAM_API_IDS[name] === homeId);
     const awayTeamName = Object.keys(TEAM_API_IDS).find(name => TEAM_API_IDS[name] === awayId);
 
-    // 90-minute regulation score
-    const homeGoals90 = item.score.fulltime.home ?? item.goals.home;
-    const awayGoals90 = item.score.fulltime.away ?? item.goals.away;
+    const homeGoals90 = item.score?.fulltime?.home ?? item.goals?.home ?? 0;
+    const awayGoals90 = item.score?.fulltime?.away ?? item.goals?.away ?? 0;
 
-    // Evaluate Home Team
     if (homeTeamName && teamStats[homeTeamName]) {
       if (homeGoals90 > awayGoals90) {
         teamStats[homeTeamName].w += 1;
@@ -96,16 +110,8 @@ async function run() {
         teamStats[homeTeamName].cs += 1;
         teamStats[homeTeamName].pts += 1;
       }
-
-      if (status === 'AET' && item.score.extratime.home > item.score.extratime.away) {
-        teamStats[homeTeamName].pts += 1;
-      }
-      if (status === 'PEN' && item.score.penalty.home > item.score.penalty.away) {
-        teamStats[homeTeamName].pts += 1;
-      }
     }
 
-    // Evaluate Away Team
     if (awayTeamName && teamStats[awayTeamName]) {
       if (awayGoals90 > homeGoals90) {
         teamStats[awayTeamName].w += 1;
@@ -121,20 +127,12 @@ async function run() {
         teamStats[awayTeamName].cs += 1;
         teamStats[awayTeamName].pts += 1;
       }
-
-      if (status === 'AET' && item.score.extratime.away > item.score.extratime.home) {
-        teamStats[awayTeamName].pts += 1;
-      }
-      if (status === 'PEN' && item.score.penalty.away > item.score.penalty.home) {
-        teamStats[awayTeamName].pts += 1;
-      }
     }
 
-    // Evaluate Red Cards from Events
     if (item.events) {
       item.events.forEach((ev) => {
         if (ev.type === 'Card' && (ev.detail === 'Red Card' || ev.detail === 'Second Yellow card')) {
-          const cardedTeam = ev.team.id === homeId ? homeTeamName : (ev.team.id === awayId ? awayTeamName : null);
+          const cardedTeam = ev.team?.id === homeId ? homeTeamName : (ev.team?.id === awayId ? awayTeamName : null);
           if (cardedTeam && teamStats[cardedTeam]) {
             teamStats[cardedTeam].rc += 1;
             teamStats[cardedTeam].pts -= 1;
@@ -144,7 +142,8 @@ async function run() {
     }
   });
 
-  // Calculate manager standings
+  console.log(`Total finished fixtures evaluated: ${finishedCount}`);
+
   const calculatedStandings = leagueData.managers.map((m) => {
     let w = 0, d = 0, cs = 0, rc = 0, pts = 0;
     const teams = m.teams.map((t) => {
@@ -168,14 +167,12 @@ async function run() {
     };
   });
 
-  // Sort by Points ➔ Total Wins ➔ Lowest Red Cards
   calculatedStandings.sort((a, b) => {
     if (b.pts !== a.pts) return b.pts - a.pts;
     if (b.w !== a.w) return b.w - a.w;
     return a.rc - b.rc;
   });
 
-  // Read previous ranks to calculate deltas
   const standingsPath = path.resolve('src/data/standings.json');
   let previousRanks = {};
   if (fs.existsSync(standingsPath)) {
@@ -198,7 +195,7 @@ async function run() {
   });
 
   fs.writeFileSync(standingsPath, JSON.stringify(finalOutput, null, 2));
-  console.log('Successfully updated standings.json');
+  console.log('Successfully wrote updated standings to src/data/standings.json');
 }
 
 run();
