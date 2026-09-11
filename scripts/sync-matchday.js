@@ -29,7 +29,7 @@ const RED_CARDS = {
   "RB Leipzig": 0,
   "Shakhtar Donetsk": 0,
   "Feyenoord": 0,
-  "Bodø/Glimt": 0,
+  "Bodø/Glimt": 1,
   "Galatasaray": 0,
   "Lille": 0,
   "Napoli": 0,
@@ -39,7 +39,7 @@ const RED_CARDS = {
   "Como": 0,
   "Lens": 0,
   "Viking": 0,
-  "Slavia Praha": 0,
+  "Slavia Praha": 1,
   "LASK": 0,
   "AEK Athens": 0
 };
