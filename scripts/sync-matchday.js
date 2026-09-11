@@ -1,47 +1,58 @@
 import fs from 'fs';
 import path from 'path';
 
-// Alias dictionary to ensure 100% accurate team matching
+// Complete aliases covering Football-Data.org official names & abbreviations
 const TEAM_ALIASES = {
-  "Inter Milan": ["inter", "internazionale", "inter milan"],
-  "Man United": ["manchester united", "man united", "man utd"],
+  "Inter Milan": ["inter", "internazionale", "inter milan", "fc internazionale milano"],
+  "Man United": ["manchester united", "man united", "man utd", "manchester united fc"],
   "RB Leipzig": ["rb leipzig", "leipzig", "rasenballsport leipzig"],
-  "Stuttgart": ["vfb stuttgart", "stuttgart"],
+  "Stuttgart": ["vfb stuttgart", "stuttgart", "vfb stuttgart 1893"],
   "Liverpool": ["liverpool", "liverpool fc"],
-  "Porto": ["fc porto", "porto"],
-  "Shakhtar Donetsk": ["shakhtar donetsk", "shakhtar", "shaktar"],
+  "Porto": ["fc porto", "porto", "futebol clube do porto"],
+  "Shakhtar Donetsk": ["shakhtar donetsk", "shakhtar", "fc shakhtar donetsk"],
   "Como": ["como", "como 1907"],
   "Real Madrid": ["real madrid", "real madrid cf"],
   "PSV Eindhoven": ["psv", "psv eindhoven"],
   "Feyenoord": ["feyenoord", "feyenoord rotterdam"],
-  "Lens": ["rc lens", "lens"],
-  "PSG": ["paris saint-germain", "psg", "paris sg"],
-  "Dortmund": ["borussia dortmund", "dortmund", "bvb"],
-  "Bodø/Glimt": ["bodø/glimt", "bodo/glimt", "fk bodø/glimt", "bodo glimt"],
-  "Viking": ["viking", "viking fk"],
+  "Lens": ["rc lens", "lens", "racing club de lens"],
+  "PSG": ["paris saint-germain", "psg", "paris saint germain", "paris sg"],
+  "Dortmund": ["borussia dortmund", "dortmund", "bvb", "bvb 09 dortmund"],
+  "Bodø/Glimt": ["bodø/glimt", "bodo/glimt", "fk bodø/glimt", "bodo glimt", "bodoe/glimt"],
+  "Viking": ["viking", "viking fk", "viking stavanger"],
   "Arsenal": ["arsenal", "arsenal fc"],
-  "Aston Villa": ["aston villa", "villa"],
-  "Galatasaray": ["galatasaray", "galatasaray sk"],
+  "Aston Villa": ["aston villa", "aston villa fc", "villa"],
+  "Galatasaray": ["galatasaray", "galatasaray sk", "galatasaray a.s."],
   "Slavia Praha": ["slavia praha", "slavia prague", "sk slavia praha"],
-  "Bayern Munich": ["bayern münchen", "bayern munich", "fc bayern"],
-  "Sporting CP": ["sporting cp", "sporting lisbon", "sporting clobe de portugal"],
-  "Lille": ["lille", "lille osc", "losc lille"],
+  "Bayern Munich": ["bayern münchen", "bayern munich", "fc bayern münchen", "fc bayern"],
+  "Sporting CP": ["sporting cp", "sporting", "sporting lisbon", "sporting clube de portugal", "sporting cp lisbon"],
+  "Lille": ["lille", "lille osc", "losc lille", "losc"],
   "LASK": ["lask", "lask linz"],
   "Barcelona": ["barcelona", "fc barcelona", "barça"],
-  "Roma": ["roma", "as roma"],
-  "Napoli": ["napoli", "ssc napoli"],
-  "AEK Athens": ["aek athens", "aek", "pae aek", "aek athens fc"]
+  "Roma": ["as roma", "roma"],
+  "Napoli": ["ssc napoli", "napoli"],
+  "AEK Athens": ["aek athens", "aek", "pae aek", "aek athens fc", "aek fc"]
 };
 
-function matchDraftTeam(apiTeamName) {
-  if (!apiTeamName) return null;
-  const cleanApiName = apiTeamName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+function normalize(str) {
+  return (str || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function matchDraftTeam(rawName, shortName) {
+  const candidates = [normalize(rawName), normalize(shortName)].filter(Boolean);
 
   for (const [officialName, aliases] of Object.entries(TEAM_ALIASES)) {
     for (const alias of aliases) {
-      const cleanAlias = alias.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-      if (cleanApiName === cleanAlias || cleanApiName.includes(cleanAlias) || cleanAlias.includes(cleanApiName)) {
-        return officialName;
+      const cleanAlias = normalize(alias);
+      for (const cand of candidates) {
+        if (cand === cleanAlias || cand.includes(cleanAlias) || cleanAlias.includes(cand)) {
+          return officialName;
+        }
       }
     }
   }
@@ -58,7 +69,7 @@ async function fetchMatches(apiKey) {
 
   const data = await res.json();
   if (data.message) {
-    console.error("API Message / Notice:", data.message);
+    console.error("API Message:", data.message);
   }
   return data.matches || [];
 }
@@ -87,11 +98,8 @@ async function run() {
     if (item.status !== 'FINISHED') return;
     finishedCount++;
 
-    const homeRaw = item.homeTeam?.name || item.homeTeam?.shortName;
-    const awayRaw = item.awayTeam?.name || item.awayTeam?.shortName;
-
-    const homeTeamName = matchDraftTeam(homeRaw);
-    const awayTeamName = matchDraftTeam(awayRaw);
+    const homeTeamName = matchDraftTeam(item.homeTeam?.name, item.homeTeam?.shortName);
+    const awayTeamName = matchDraftTeam(item.awayTeam?.name, item.awayTeam?.shortName);
 
     const homeGoals = item.score?.regularTime?.home ?? item.score?.fullTime?.home ?? 0;
     const awayGoals = item.score?.regularTime?.away ?? item.score?.fullTime?.away ?? 0;
@@ -159,7 +167,7 @@ async function run() {
     };
   });
 
-  // Sort by Points -> Total Wins -> Lowest Red Cards
+  // Sort by Points -> Total Wins -> Fewest Red Cards
   calculatedStandings.sort((a, b) => {
     if (b.pts !== a.pts) return b.pts - a.pts;
     if (b.w !== a.w) return b.w - a.w;
