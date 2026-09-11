@@ -57,7 +57,7 @@
       }
     ],
     "rank": 1,
-    "rankDelta": 5
+    "rankDelta": 0
   },
   {
     "managerName": "Westy",
@@ -117,7 +117,7 @@
       }
     ],
     "rank": 2,
-    "rankDelta": -1
+    "rankDelta": 0
   },
   {
     "managerName": "Theo",
@@ -177,7 +177,7 @@
       }
     ],
     "rank": 3,
-    "rankDelta": 4
+    "rankDelta": 0
   },
   {
     "managerName": "Antoine",
@@ -237,7 +237,7 @@
       }
     ],
     "rank": 4,
-    "rankDelta": -2
+    "rankDelta": 0
   },
   {
     "managerName": "Sam",
@@ -297,7 +297,67 @@
       }
     ],
     "rank": 5,
-    "rankDelta": -2
+    "rankDelta": 0
+  },
+  {
+    "managerName": "Matt",
+    "w": 2,
+    "d": 0,
+    "cs": 1,
+    "rc": 0,
+    "pts": 7,
+    "teams": [
+      {
+        "pot": 1,
+        "name": "Bayern Munich",
+        "code": "BAY",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "cs": 1,
+        "rc": 0,
+        "pts": 4
+      },
+      {
+        "pot": 2,
+        "name": "Sporting CP",
+        "code": "SCP",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "cs": 0,
+        "rc": 0,
+        "pts": 3
+      },
+      {
+        "pot": 3,
+        "name": "Lille",
+        "code": "LIL",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "cs": 0,
+        "rc": 0,
+        "pts": 0
+      },
+      {
+        "pot": 4,
+        "name": "LASK",
+        "code": "LSK",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8327.png",
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "cs": 0,
+        "rc": 0,
+        "pts": 0
+      }
+    ],
+    "rank": 6,
+    "rankDelta": 1
   },
   {
     "managerName": "Charlie",
@@ -356,67 +416,7 @@
         "pts": 0
       }
     ],
-    "rank": 6,
-    "rankDelta": -1
-  },
-  {
-    "managerName": "Matt",
-    "w": 1,
-    "d": 0,
-    "cs": 1,
-    "rc": 0,
-    "pts": 4,
-    "teams": [
-      {
-        "pot": 1,
-        "name": "Bayern Munich",
-        "code": "BAY",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
-        "w": 1,
-        "d": 0,
-        "l": 0,
-        "cs": 1,
-        "rc": 0,
-        "pts": 4
-      },
-      {
-        "pot": 2,
-        "name": "Sporting CP",
-        "code": "SCP",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
-        "w": 0,
-        "d": 0,
-        "l": 0,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      },
-      {
-        "pot": 3,
-        "name": "Lille",
-        "code": "LIL",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
-        "w": 0,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      },
-      {
-        "pot": 4,
-        "name": "LASK",
-        "code": "LSK",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8327.png",
-        "w": 0,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      }
-    ],
     "rank": 7,
-    "rankDelta": -3
+    "rankDelta": -1
   }
 ]
