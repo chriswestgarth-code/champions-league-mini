@@ -1,41 +1,56 @@
 import fs from 'fs';
 import path from 'path';
 
-// Mapping team names to Football-Data.org Team IDs
-const TEAM_IDS = {
-  "Inter Milan": 108,
-  "Man United": 66,
-  "RB Leipzig": 721,
-  "Stuttgart": 10,
-  "Liverpool": 64,
-  "Porto": 503,
-  "Shakhtar Donetsk": 654,
-  "Como": 1077,
-  "Real Madrid": 86,
-  "PSV Eindhoven": 674,
-  "Feyenoord": 675,
-  "Lens": 546,
-  "PSG": 524,
-  "Dortmund": 4,
-  "Bodø/Glimt": 7458,
-  "Viking": 7455,
-  "Arsenal": 57,
-  "Aston Villa": 58,
-  "Galatasaray": 610,
-  "Slavia Praha": 1097,
-  "Bayern Munich": 5,
-  "Sporting CP": 498,
-  "Lille": 521,
-  "LASK": 2014,
-  "Barcelona": 81,
-  "Roma": 100,
-  "Napoli": 113,
-  "AEK Athens": 639
+// Alias dictionary to ensure 100% accurate team matching
+const TEAM_ALIASES = {
+  "Inter Milan": ["inter", "internazionale", "inter milan"],
+  "Man United": ["manchester united", "man united", "man utd"],
+  "RB Leipzig": ["rb leipzig", "leipzig", "rasenballsport leipzig"],
+  "Stuttgart": ["vfb stuttgart", "stuttgart"],
+  "Liverpool": ["liverpool", "liverpool fc"],
+  "Porto": ["fc porto", "porto"],
+  "Shakhtar Donetsk": ["shakhtar donetsk", "shakhtar", "shaktar"],
+  "Como": ["como", "como 1907"],
+  "Real Madrid": ["real madrid", "real madrid cf"],
+  "PSV Eindhoven": ["psv", "psv eindhoven"],
+  "Feyenoord": ["feyenoord", "feyenoord rotterdam"],
+  "Lens": ["rc lens", "lens"],
+  "PSG": ["paris saint-germain", "psg", "paris sg"],
+  "Dortmund": ["borussia dortmund", "dortmund", "bvb"],
+  "Bodø/Glimt": ["bodø/glimt", "bodo/glimt", "fk bodø/glimt", "bodo glimt"],
+  "Viking": ["viking", "viking fk"],
+  "Arsenal": ["arsenal", "arsenal fc"],
+  "Aston Villa": ["aston villa", "villa"],
+  "Galatasaray": ["galatasaray", "galatasaray sk"],
+  "Slavia Praha": ["slavia praha", "slavia prague", "sk slavia praha"],
+  "Bayern Munich": ["bayern münchen", "bayern munich", "fc bayern"],
+  "Sporting CP": ["sporting cp", "sporting lisbon", "sporting clobe de portugal"],
+  "Lille": ["lille", "lille osc", "losc lille"],
+  "LASK": ["lask", "lask linz"],
+  "Barcelona": ["barcelona", "fc barcelona", "barça"],
+  "Roma": ["roma", "as roma"],
+  "Napoli": ["napoli", "ssc napoli"],
+  "AEK Athens": ["aek athens", "aek", "pae aek", "aek athens fc"]
 };
+
+function matchDraftTeam(apiTeamName) {
+  if (!apiTeamName) return null;
+  const cleanApiName = apiTeamName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+
+  for (const [officialName, aliases] of Object.entries(TEAM_ALIASES)) {
+    for (const alias of aliases) {
+      const cleanAlias = alias.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+      if (cleanApiName === cleanAlias || cleanApiName.includes(cleanAlias) || cleanAlias.includes(cleanApiName)) {
+        return officialName;
+      }
+    }
+  }
+  return null;
+}
 
 async function fetchMatches(apiKey) {
   const url = `https://api.football-data.org/v4/competitions/CL/matches`;
-  console.log(`Fetching from Football-Data.org: ${url}`);
+  console.log(`Fetching matches from: ${url}`);
 
   const res = await fetch(url, {
     headers: { 'X-Auth-Token': apiKey }
@@ -44,9 +59,6 @@ async function fetchMatches(apiKey) {
   const data = await res.json();
   if (data.message) {
     console.error("API Message / Notice:", data.message);
-  }
-  if (data.errorCode) {
-    console.error(`API Error Code: ${data.errorCode} - ${data.message}`);
   }
   return data.matches || [];
 }
@@ -65,7 +77,7 @@ async function run() {
   console.log(`Total CL matches retrieved: ${matches.length}`);
 
   const teamStats = {};
-  Object.keys(TEAM_IDS).forEach((teamName) => {
+  Object.keys(TEAM_ALIASES).forEach((teamName) => {
     teamStats[teamName] = { w: 0, d: 0, l: 0, cs: 0, rc: 0, pts: 0 };
   });
 
@@ -75,16 +87,16 @@ async function run() {
     if (item.status !== 'FINISHED') return;
     finishedCount++;
 
-    const homeId = item.homeTeam?.id;
-    const awayId = item.awayTeam?.id;
+    const homeRaw = item.homeTeam?.name || item.homeTeam?.shortName;
+    const awayRaw = item.awayTeam?.name || item.awayTeam?.shortName;
 
-    const homeTeamName = Object.keys(TEAM_IDS).find(name => TEAM_IDS[name] === homeId);
-    const awayTeamName = Object.keys(TEAM_IDS).find(name => TEAM_IDS[name] === awayId);
+    const homeTeamName = matchDraftTeam(homeRaw);
+    const awayTeamName = matchDraftTeam(awayRaw);
 
     const homeGoals = item.score?.regularTime?.home ?? item.score?.fullTime?.home ?? 0;
     const awayGoals = item.score?.regularTime?.away ?? item.score?.fullTime?.away ?? 0;
 
-    // Evaluate Home Team
+    // Home Team Points
     if (homeTeamName && teamStats[homeTeamName]) {
       if (homeGoals > awayGoals) {
         teamStats[homeTeamName].w += 1;
@@ -102,7 +114,7 @@ async function run() {
       }
     }
 
-    // Evaluate Away Team
+    // Away Team Points
     if (awayTeamName && teamStats[awayTeamName]) {
       if (awayGoals > homeGoals) {
         teamStats[awayTeamName].w += 1;
@@ -121,7 +133,7 @@ async function run() {
     }
   });
 
-  console.log(`Processed ${finishedCount} finished matches.`);
+  console.log(`Successfully processed ${finishedCount} finished matches.`);
 
   // Calculate manager standings
   const calculatedStandings = leagueData.managers.map((m) => {
@@ -177,7 +189,7 @@ async function run() {
   });
 
   fs.writeFileSync(standingsPath, JSON.stringify(finalOutput, null, 2));
-  console.log('Successfully written updated standings to src/data/standings.json');
+  console.log('Successfully wrote updated standings to src/data/standings.json');
 }
 
 run();
