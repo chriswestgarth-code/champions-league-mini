@@ -357,7 +357,7 @@
       }
     ],
     "rank": 6,
-    "rankDelta": 1
+    "rankDelta": 0
   },
   {
     "managerName": "Charlie",
@@ -417,6 +417,6 @@
       }
     ],
     "rank": 7,
-    "rankDelta": -1
+    "rankDelta": 0
   }
 ]
