@@ -240,66 +240,6 @@
     "rankDelta": 0
   },
   {
-    "managerName": "Sam",
-    "w": 2,
-    "d": 0,
-    "cs": 1,
-    "rc": 0,
-    "pts": 7,
-    "teams": [
-      {
-        "pot": 1,
-        "name": "Arsenal",
-        "code": "ARS",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
-        "w": 1,
-        "d": 0,
-        "l": 0,
-        "cs": 1,
-        "rc": 0,
-        "pts": 4
-      },
-      {
-        "pot": 2,
-        "name": "Aston Villa",
-        "code": "AVL",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
-        "w": 1,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 3
-      },
-      {
-        "pot": 3,
-        "name": "Galatasaray",
-        "code": "GAL",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png",
-        "w": 0,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      },
-      {
-        "pot": 4,
-        "name": "Slavia Praha",
-        "code": "SLA",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8490.png",
-        "w": 0,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      }
-    ],
-    "rank": 5,
-    "rankDelta": 0
-  },
-  {
     "managerName": "Matt",
     "w": 2,
     "d": 0,
@@ -356,16 +296,76 @@
         "pts": 0
       }
     ],
+    "rank": 5,
+    "rankDelta": 1
+  },
+  {
+    "managerName": "Sam",
+    "w": 2,
+    "d": 0,
+    "cs": 1,
+    "rc": 1,
+    "pts": 6,
+    "teams": [
+      {
+        "pot": 1,
+        "name": "Arsenal",
+        "code": "ARS",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
+        "w": 1,
+        "d": 0,
+        "l": 0,
+        "cs": 1,
+        "rc": 0,
+        "pts": 4
+      },
+      {
+        "pot": 2,
+        "name": "Aston Villa",
+        "code": "AVL",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
+        "w": 1,
+        "d": 0,
+        "l": 1,
+        "cs": 0,
+        "rc": 0,
+        "pts": 3
+      },
+      {
+        "pot": 3,
+        "name": "Galatasaray",
+        "code": "GAL",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png",
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "cs": 0,
+        "rc": 0,
+        "pts": 0
+      },
+      {
+        "pot": 4,
+        "name": "Slavia Praha",
+        "code": "SLA",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8490.png",
+        "w": 0,
+        "d": 0,
+        "l": 1,
+        "cs": 0,
+        "rc": 1,
+        "pts": -1
+      }
+    ],
     "rank": 6,
-    "rankDelta": 0
+    "rankDelta": -1
   },
   {
     "managerName": "Charlie",
     "w": 2,
     "d": 0,
     "cs": 0,
-    "rc": 0,
-    "pts": 6,
+    "rc": 1,
+    "pts": 5,
     "teams": [
       {
         "pot": 1,
@@ -400,8 +400,8 @@
         "d": 0,
         "l": 1,
         "cs": 0,
-        "rc": 0,
-        "pts": 0
+        "rc": 1,
+        "pts": -1
       },
       {
         "pot": 4,
