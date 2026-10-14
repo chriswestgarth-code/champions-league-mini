@@ -117,15 +117,15 @@
       }
     ],
     "rank": 2,
-    "rankDelta": 2
+    "rankDelta": 0
   },
   {
     "managerName": "Matt",
     "w": 3,
     "d": 1,
     "cs": 2,
-    "rc": 1,
-    "pts": 11,
+    "rc": 2,
+    "pts": 10,
     "teams": [
       {
         "pot": 1,
@@ -136,8 +136,8 @@
         "d": 1,
         "l": 0,
         "cs": 1,
-        "rc": 0,
-        "pts": 5
+        "rc": 1,
+        "pts": 4
       },
       {
         "pot": 2,
@@ -177,7 +177,7 @@
       }
     ],
     "rank": 3,
-    "rankDelta": -1
+    "rankDelta": 0
   },
   {
     "managerName": "Westy",
@@ -237,7 +237,7 @@
       }
     ],
     "rank": 4,
-    "rankDelta": -1
+    "rankDelta": 0
   },
   {
     "managerName": "Theo",
