@@ -13,7 +13,7 @@ const RED_CARDS = {
   "Real Madrid": 0,
   "PSG": 0,
   "Arsenal": 0,
-  "Bayern Munich": 0,
+  "Bayern Munich": 1, // Matt (GW2)
   "Barcelona": 0,
 
   // Pot 2
@@ -31,7 +31,7 @@ const RED_CARDS = {
   "Feyenoord": 0,
   "Bodø/Glimt": 1,        // Charlie (GW1)
   "Galatasaray": 0,
-  "Lille": 1,             // Matt (GW2)
+  "Lille": 1,             // Matt (GW1)
   "Napoli": 0,
 
   // Pot 4
