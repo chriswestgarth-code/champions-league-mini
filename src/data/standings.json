@@ -1,5 +1,185 @@
 [
   {
+    "managerName": "Sam",
+    "w": 7,
+    "d": 2,
+    "cs": 3,
+    "rc": 1,
+    "pts": 25,
+    "teams": [
+      {
+        "pot": 1,
+        "name": "Arsenal",
+        "code": "ARS",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
+        "w": 2,
+        "d": 1,
+        "l": 0,
+        "cs": 2,
+        "rc": 0,
+        "pts": 9
+      },
+      {
+        "pot": 2,
+        "name": "Aston Villa",
+        "code": "AVL",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
+        "w": 4,
+        "d": 0,
+        "l": 2,
+        "cs": 1,
+        "rc": 0,
+        "pts": 13
+      },
+      {
+        "pot": 3,
+        "name": "Galatasaray",
+        "code": "GAL",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png",
+        "w": 1,
+        "d": 0,
+        "l": 2,
+        "cs": 0,
+        "rc": 0,
+        "pts": 3
+      },
+      {
+        "pot": 4,
+        "name": "Slavia Praha",
+        "code": "SLA",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8490.png",
+        "w": 0,
+        "d": 1,
+        "l": 2,
+        "cs": 0,
+        "rc": 1,
+        "pts": 0
+      }
+    ],
+    "rank": 1,
+    "rankDelta": 2
+  },
+  {
+    "managerName": "Antoine",
+    "w": 6,
+    "d": 1,
+    "cs": 1,
+    "rc": 0,
+    "pts": 20,
+    "teams": [
+      {
+        "pot": 1,
+        "name": "Real Madrid",
+        "code": "RMA",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png",
+        "w": 3,
+        "d": 0,
+        "l": 0,
+        "cs": 0,
+        "rc": 0,
+        "pts": 9
+      },
+      {
+        "pot": 2,
+        "name": "PSV Eindhoven",
+        "code": "PSV",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
+        "w": 1,
+        "d": 1,
+        "l": 1,
+        "cs": 1,
+        "rc": 0,
+        "pts": 5
+      },
+      {
+        "pot": 3,
+        "name": "Feyenoord",
+        "code": "FEY",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10235.png",
+        "w": 1,
+        "d": 0,
+        "l": 2,
+        "cs": 0,
+        "rc": 0,
+        "pts": 3
+      },
+      {
+        "pot": 4,
+        "name": "Lens",
+        "code": "RCL",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
+        "w": 1,
+        "d": 0,
+        "l": 2,
+        "cs": 0,
+        "rc": 0,
+        "pts": 3
+      }
+    ],
+    "rank": 2,
+    "rankDelta": 2
+  },
+  {
+    "managerName": "Theo",
+    "w": 6,
+    "d": 1,
+    "cs": 0,
+    "rc": 0,
+    "pts": 19,
+    "teams": [
+      {
+        "pot": 1,
+        "name": "Liverpool",
+        "code": "LIV",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
+        "w": 3,
+        "d": 0,
+        "l": 0,
+        "cs": 0,
+        "rc": 0,
+        "pts": 9
+      },
+      {
+        "pot": 2,
+        "name": "Porto",
+        "code": "POR",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png",
+        "w": 0,
+        "d": 0,
+        "l": 3,
+        "cs": 0,
+        "rc": 0,
+        "pts": 0
+      },
+      {
+        "pot": 3,
+        "name": "Shakhtar Donetsk",
+        "code": "SHK",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/2034.png",
+        "w": 1,
+        "d": 1,
+        "l": 1,
+        "cs": 0,
+        "rc": 0,
+        "pts": 4
+      },
+      {
+        "pot": 4,
+        "name": "Como",
+        "code": "COM",
+        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10006.png",
+        "w": 2,
+        "d": 0,
+        "l": 1,
+        "cs": 0,
+        "rc": 0,
+        "pts": 6
+      }
+    ],
+    "rank": 3,
+    "rankDelta": 2
+  },
+  {
     "managerName": "Charlie",
     "w": 6,
     "d": 1,
@@ -50,14 +230,14 @@
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8422.png",
         "w": 0,
         "d": 1,
-        "l": 1,
+        "l": 2,
         "cs": 0,
         "rc": 0,
         "pts": 1
       }
     ],
-    "rank": 1,
-    "rankDelta": 3
+    "rank": 4,
+    "rankDelta": -3
   },
   {
     "managerName": "Wilson",
@@ -116,208 +296,28 @@
         "pts": 4
       }
     ],
-    "rank": 2,
-    "rankDelta": 4
-  },
-  {
-    "managerName": "Sam",
-    "w": 5,
-    "d": 1,
-    "cs": 3,
-    "rc": 1,
-    "pts": 18,
-    "teams": [
-      {
-        "pot": 1,
-        "name": "Arsenal",
-        "code": "ARS",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9825.png",
-        "w": 2,
-        "d": 0,
-        "l": 0,
-        "cs": 2,
-        "rc": 0,
-        "pts": 8
-      },
-      {
-        "pot": 2,
-        "name": "Aston Villa",
-        "code": "AVL",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10252.png",
-        "w": 3,
-        "d": 0,
-        "l": 2,
-        "cs": 1,
-        "rc": 0,
-        "pts": 10
-      },
-      {
-        "pot": 3,
-        "name": "Galatasaray",
-        "code": "GAL",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8637.png",
-        "w": 0,
-        "d": 0,
-        "l": 2,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      },
-      {
-        "pot": 4,
-        "name": "Slavia Praha",
-        "code": "SLA",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8490.png",
-        "w": 0,
-        "d": 1,
-        "l": 2,
-        "cs": 0,
-        "rc": 1,
-        "pts": 0
-      }
-    ],
-    "rank": 3,
-    "rankDelta": -2
-  },
-  {
-    "managerName": "Antoine",
-    "w": 5,
-    "d": 1,
-    "cs": 1,
-    "rc": 0,
-    "pts": 17,
-    "teams": [
-      {
-        "pot": 1,
-        "name": "Real Madrid",
-        "code": "RMA",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8633.png",
-        "w": 2,
-        "d": 0,
-        "l": 0,
-        "cs": 0,
-        "rc": 0,
-        "pts": 6
-      },
-      {
-        "pot": 2,
-        "name": "PSV Eindhoven",
-        "code": "PSV",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8640.png",
-        "w": 1,
-        "d": 1,
-        "l": 1,
-        "cs": 1,
-        "rc": 0,
-        "pts": 5
-      },
-      {
-        "pot": 3,
-        "name": "Feyenoord",
-        "code": "FEY",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10235.png",
-        "w": 1,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 3
-      },
-      {
-        "pot": 4,
-        "name": "Lens",
-        "code": "RCL",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8588.png",
-        "w": 1,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 3
-      }
-    ],
-    "rank": 4,
-    "rankDelta": -1
-  },
-  {
-    "managerName": "Theo",
-    "w": 5,
-    "d": 1,
-    "cs": 0,
-    "rc": 0,
-    "pts": 16,
-    "teams": [
-      {
-        "pot": 1,
-        "name": "Liverpool",
-        "code": "LIV",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8650.png",
-        "w": 3,
-        "d": 0,
-        "l": 0,
-        "cs": 0,
-        "rc": 0,
-        "pts": 9
-      },
-      {
-        "pot": 2,
-        "name": "Porto",
-        "code": "POR",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9773.png",
-        "w": 0,
-        "d": 0,
-        "l": 3,
-        "cs": 0,
-        "rc": 0,
-        "pts": 0
-      },
-      {
-        "pot": 3,
-        "name": "Shakhtar Donetsk",
-        "code": "SHK",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/2034.png",
-        "w": 1,
-        "d": 1,
-        "l": 0,
-        "cs": 0,
-        "rc": 0,
-        "pts": 4
-      },
-      {
-        "pot": 4,
-        "name": "Como",
-        "code": "COM",
-        "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10006.png",
-        "w": 1,
-        "d": 0,
-        "l": 1,
-        "cs": 0,
-        "rc": 0,
-        "pts": 3
-      }
-    ],
     "rank": 5,
     "rankDelta": -3
   },
   {
     "managerName": "Westy",
-    "w": 4,
+    "w": 5,
     "d": 1,
-    "cs": 3,
+    "cs": 4,
     "rc": 2,
-    "pts": 14,
+    "pts": 18,
     "teams": [
       {
         "pot": 1,
         "name": "Inter Milan",
         "code": "INT",
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8636.png",
-        "w": 0,
+        "w": 1,
         "d": 0,
         "l": 2,
-        "cs": 0,
+        "cs": 1,
         "rc": 1,
-        "pts": -1
+        "pts": 3
       },
       {
         "pot": 2,
@@ -326,7 +326,7 @@
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/10260.png",
         "w": 1,
         "d": 0,
-        "l": 1,
+        "l": 2,
         "cs": 1,
         "rc": 1,
         "pts": 3
@@ -338,7 +338,7 @@
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/178475.png",
         "w": 1,
         "d": 0,
-        "l": 1,
+        "l": 2,
         "cs": 1,
         "rc": 0,
         "pts": 4
@@ -357,15 +357,15 @@
       }
     ],
     "rank": 6,
-    "rankDelta": -1
+    "rankDelta": 0
   },
   {
     "managerName": "Matt",
-    "w": 3,
-    "d": 1,
+    "w": 4,
+    "d": 2,
     "cs": 2,
     "rc": 2,
-    "pts": 10,
+    "pts": 14,
     "teams": [
       {
         "pot": 1,
@@ -373,11 +373,11 @@
         "code": "BAY",
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9823.png",
         "w": 1,
-        "d": 1,
+        "d": 2,
         "l": 0,
         "cs": 1,
         "rc": 1,
-        "pts": 4
+        "pts": 5
       },
       {
         "pot": 2,
@@ -386,7 +386,7 @@
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/9768.png",
         "w": 2,
         "d": 0,
-        "l": 0,
+        "l": 1,
         "cs": 1,
         "rc": 0,
         "pts": 7
@@ -398,7 +398,7 @@
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8639.png",
         "w": 0,
         "d": 0,
-        "l": 2,
+        "l": 3,
         "cs": 0,
         "rc": 1,
         "pts": -1
@@ -408,12 +408,12 @@
         "name": "LASK",
         "code": "LSK",
         "badge": "https://images.fotmob.com/image_resources/logo/teamlogo/8327.png",
-        "w": 0,
+        "w": 1,
         "d": 0,
         "l": 2,
         "cs": 0,
         "rc": 0,
-        "pts": 0
+        "pts": 3
       }
     ],
     "rank": 7,
