@@ -2,44 +2,38 @@ import fs from 'fs';
 import path from 'path';
 
 // =========================================================================
-// 🟥 RED CARD TRACKER
-// Update the number next to any team when a player receives a red card.
-// Each red card deducts 1 point (-1 PTS) and is tracked on the leaderboard.
+// 🟥 LIVE GOOGLE SHEET RED CARD TRACKER
 // =========================================================================
-const RED_CARDS = {
-  // Pot 1
-  "Inter Milan": 1,       // Westy (GW2)
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7djO-SH_Lxd06QKHKxKvOKX9IpTDe49cF8P2LOckg3IN9gehX1uWfBpThwjtUtL945hKdmw37Vg6N/pub?output=csv";
+
+// Fallback values in case Google Sheets is temporarily unreachable
+const FALLBACK_RED_CARDS = {
+  "Inter Milan": 0,
   "Liverpool": 0,
   "Real Madrid": 0,
   "PSG": 0,
   "Arsenal": 0,
-  "Bayern Munich": 1, // Matt (GW2)
+  "Bayern Munich": 1,
   "Barcelona": 0,
-
-  // Pot 2
-  "Man United": 1,        // Westy (GW2)
+  "Man United": 1,
   "Porto": 0,
   "PSV Eindhoven": 0,
   "Dortmund": 0,
   "Aston Villa": 0,
   "Sporting CP": 0,
   "Roma": 0,
-
-  // Pot 3
   "RB Leipzig": 0,
   "Shakhtar Donetsk": 0,
   "Feyenoord": 0,
-  "Bodø/Glimt": 1,        // Charlie (GW1)
+  "Bodø/Glimt": 1,
   "Galatasaray": 0,
-  "Lille": 1,             // Matt (GW1)
+  "Lille": 1,
   "Napoli": 0,
-
-  // Pot 4
   "Stuttgart": 0,
   "Como": 0,
   "Lens": 0,
   "Viking": 0,
-  "Slavia Praha": 1,      // Sam (GW1)
+  "Slavia Praha": 1,
   "LASK": 0,
   "AEK Athens": 0
 };
@@ -102,6 +96,38 @@ function matchDraftTeam(rawName, shortName) {
   return null;
 }
 
+async function fetchRedCardsFromSheet() {
+  const redCards = { ...FALLBACK_RED_CARDS };
+  try {
+    console.log("Fetching live red card counts from Google Sheets...");
+    const res = await fetch(`${SHEET_CSV_URL}&t=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const csvText = await res.text();
+    const lines = csvText.split(/\r?\n/);
+
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+
+      const parts = line.split(',');
+      const rawTeam = parts[0]?.replace(/^"|"$/g, '').trim();
+      const rawCount = parts[1]?.replace(/^"|"$/g, '').trim();
+
+      if (rawTeam && rawCount !== undefined) {
+        const matchedTeam = matchDraftTeam(rawTeam, rawTeam) || rawTeam;
+        const parsedCount = parseInt(rawCount, 10);
+        if (!isNaN(parsedCount)) {
+          redCards[matchedTeam] = parsedCount;
+        }
+      }
+    }
+    console.log("Successfully loaded red cards from Google Sheet:", redCards);
+  } catch (err) {
+    console.error("Failed to fetch Google Sheet, using fallback red cards:", err.message);
+  }
+  return redCards;
+}
+
 async function fetchMatches(apiKey) {
   const url = `https://api.football-data.org/v4/competitions/CL/matches`;
   console.log(`Fetching matches from: ${url}`);
@@ -127,13 +153,17 @@ async function run() {
   const leagueDataPath = path.resolve('src/data/leagueData.json');
   const leagueData = JSON.parse(fs.readFileSync(leagueDataPath, 'utf8'));
 
-  const matches = await fetchMatches(apiKey);
+  const [redCards, matches] = await Promise.all([
+    fetchRedCardsFromSheet(),
+    fetchMatches(apiKey)
+  ]);
+
   console.log(`Total CL matches retrieved: ${matches.length}`);
 
-  // Initialize stats with red card tracker values
+  // Initialize stats with live Google Sheet red card values
   const teamStats = {};
   Object.keys(TEAM_ALIASES).forEach((teamName) => {
-    const rcCount = RED_CARDS[teamName] || 0;
+    const rcCount = redCards[teamName] || 0;
     teamStats[teamName] = { w: 0, d: 0, l: 0, cs: 0, rc: rcCount, pts: -rcCount };
   });
 
