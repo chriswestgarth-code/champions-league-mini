@@ -117,7 +117,7 @@
       }
     ],
     "rank": 2,
-    "rankDelta": 5
+    "rankDelta": 0
   },
   {
     "managerName": "Charlie",
@@ -177,7 +177,7 @@
       }
     ],
     "rank": 3,
-    "rankDelta": 1
+    "rankDelta": 0
   },
   {
     "managerName": "Westy",
@@ -237,7 +237,7 @@
       }
     ],
     "rank": 4,
-    "rankDelta": 2
+    "rankDelta": 0
   },
   {
     "managerName": "Wilson",
@@ -357,7 +357,7 @@
       }
     ],
     "rank": 6,
-    "rankDelta": -4
+    "rankDelta": 0
   },
   {
     "managerName": "Theo",
@@ -417,6 +417,6 @@
       }
     ],
     "rank": 7,
-    "rankDelta": -4
+    "rankDelta": 0
   }
 ]
