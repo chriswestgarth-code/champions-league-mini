@@ -57,7 +57,7 @@ const TEAM_ALIASES = {
   "Bodø/Glimt": ["bodø/glimt", "bodo/glimt", "fk bodø/glimt", "bodo glimt", "bodoe/glimt"],
   "Viking": ["viking", "viking fk", "viking stavanger"],
   "Arsenal": ["arsenal", "arsenal fc"],
-  "Aston Villa": ["aston villa", "aston villa fc", "villa"],
+  "Aston Villa": ["aston villa", "aston villa fc"],
   "Galatasaray": ["galatasaray", "galatasaray sk", "galatasaray a.s."],
   "Slavia Praha": ["slavia praha", "slavia prague", "sk slavia praha"],
   "Bayern Munich": ["bayern münchen", "bayern munich", "fc bayern münchen", "fc bayern"],
@@ -86,8 +86,9 @@ function matchDraftTeam(rawName, shortName) {
   for (const [officialName, aliases] of Object.entries(TEAM_ALIASES)) {
     for (const alias of aliases) {
       const cleanAlias = normalize(alias);
+      const regex = new RegExp(`(^|\\s)${cleanAlias}(\\s|$)`);
       for (const cand of candidates) {
-        if (cand === cleanAlias || cand.includes(cleanAlias) || cleanAlias.includes(cand)) {
+        if (cand === cleanAlias || regex.test(cand)) {
           return officialName;
         }
       }
