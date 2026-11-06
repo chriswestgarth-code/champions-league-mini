@@ -57,7 +57,7 @@
       }
     ],
     "rank": 1,
-    "rankDelta": 1
+    "rankDelta": 0
   },
   {
     "managerName": "Sam",
@@ -117,7 +117,7 @@
       }
     ],
     "rank": 2,
-    "rankDelta": -1
+    "rankDelta": 0
   },
   {
     "managerName": "Matt",
